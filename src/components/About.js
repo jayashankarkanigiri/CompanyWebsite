@@ -49,10 +49,10 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Why Choose <span className="text-red-400">Tanvox Technologies</span>
             </h2>
-            <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
               We are a team of passionate developers and designers dedicated to creating innovative software solutions that drive business growth and digital transformation.
             </p>
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               With over a decade of experience in the industry, we've helped hundreds of businesses leverage technology to achieve their goals and stay ahead of the competition.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -73,10 +73,10 @@ const About = () => {
                 <div className="text-red-400 mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-white">
+                <h3 className="text-xl font-bold mb-2 text-gray-900">
                   {feature.title}
                 </h3>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-700 text-sm">
                   {feature.description}
                 </p>
               </div>
@@ -88,7 +88,7 @@ const About = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
               <div className="text-4xl font-bold text-red-400 mb-2">10+</div>
-              <div className="text-gray-400">Years Experience</div>
+              <div className="text-gray-600">Years Experience</div>
             </div>
             <div className="flex flex-col items-center">
                 <img
@@ -100,11 +100,11 @@ const About = () => {
               </div>
             <div>
               <div className="text-4xl font-bold text-red-400 mb-2">20+</div>
-              <div className="text-gray-400">Happy Clients</div>
+              <div className="text-gray-600">Happy Clients</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-red-400 mb-2">50+</div>
-              <div className="text-gray-400">Team Members</div>
+              <div className="text-gray-600">Team Members</div>
             </div>
           </div>
         </div>

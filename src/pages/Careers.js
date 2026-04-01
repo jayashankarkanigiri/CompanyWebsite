@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import careersImg from '../assets/UpdatedCareersPage.png';
+import careersImg from '../assets/TanvoxCareers2.png';
 import '../index.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,19 +23,19 @@ const Careers = () => {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-    // Hero Entrance
+    // Hero Entrance Animations
     tl.fromTo(titleRef.current,
-      { opacity: 0, x: -100 },
-      { opacity: 1, x: 0, duration: 1.2, delay: 0.2 }
+      { opacity: 0, y: 80 },
+      { opacity: 1, y: 0, duration: 1.2, delay: 0.2 }
     )
       .fromTo(textRef.current,
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 1 },
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1 },
         "-=0.8"
       )
       .fromTo(imageRef.current,
-        { opacity: 0, x: 100, scale: 0.9, rotate: 5 },
-        { opacity: 1, x: 0, scale: 1, rotate: 0, duration: 1.5 },
+        { opacity: 0, scale: 0.9, x: -200 },
+        { opacity: 1, scale: 1, x: 0, duration: 1.8, ease: 'power3.out' },
         "-=1.2"
       );
 
@@ -51,7 +51,7 @@ const Careers = () => {
     // --- ScrollTrigger Animations ---
 
     // Benefits Reveal
-    const benefitCards = benefitsRef.current.querySelectorAll('.glass-card');
+    const benefitCards = benefitsRef.current.querySelectorAll('.bg-white');
     gsap.fromTo(benefitCards,
       { opacity: 0, y: 40 },
       {
@@ -61,12 +61,13 @@ const Careers = () => {
         scrollTrigger: {
           trigger: benefitsRef.current,
           start: "top 80%",
+          toggleActions: "play none none none"
         }
       }
     );
 
     // Openings Stagger
-    const jobCards = openingsRef.current.querySelectorAll('.glass-card');
+    const jobCards = openingsRef.current.querySelectorAll('.bg-white');
     gsap.fromTo(jobCards,
       { opacity: 0, x: -30 },
       {
@@ -76,12 +77,13 @@ const Careers = () => {
         scrollTrigger: {
           trigger: openingsRef.current,
           start: "top 85%",
+          toggleActions: "play none none none"
         }
       }
     );
 
     // Culture Sections
-    const cultureItems = cultureRef.current.querySelectorAll('.glass-card');
+    const cultureItems = cultureRef.current.querySelectorAll('.bg-white');
     gsap.fromTo(cultureItems,
       { opacity: 0, y: 60, scale: 0.95 },
       {
@@ -91,6 +93,7 @@ const Careers = () => {
         scrollTrigger: {
           trigger: cultureRef.current,
           start: "top 80%",
+          toggleActions: "play reverse play reverse"
         }
       }
     );
@@ -212,25 +215,23 @@ const Careers = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
+    <div className="min-h-screen bg-[#f8fafc] text-gray-900 overflow-hidden">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
         {/* Background Effects */}
         <div className="bg-mesh opacity-40"></div>
         <div className="grid-bg absolute inset-0"></div>
 
-        {/* Glow Orbs */}
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Glow Orbs Removed */}
 
 
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            {/* LEFT SIDE - TEXT */}
-            <div className="max-w-xl">
-              <h1 ref={titleRef} className="text-3xl md:text-5xl font-black mb-8 leading-[1] tracking-tighter">
+            {/* Text Content */}
+            <div className="max-w-2xl order-1 lg:order-2">
+              <h1 ref={titleRef} className="text-2xl md:text-4xl font-black mb-6 leading-[1.1] tracking-tighter">
                 Join Our <br />
                 <span className="text-gradient">Team</span>
               </h1>
@@ -246,16 +247,15 @@ const Careers = () => {
 
             </div>
 
-            {/* RIGHT SIDE - IMAGE */}
-            <div className="relative">
-              <div className="absolute -inset-10 bg-gradient-to-r from-blue-600/20 to-purple-600/20 blur-[100px] rounded-full"></div>
-              <div ref={imageRef} className="relative z-10 shadow-2xl rounded-[32px] overflow-hidden">
+            {/* Hero Image */}
+            <div className="relative order-2 lg:order-1">
+              <div ref={imageRef} className="relative z-10 overflow-hidden group hover:-translate-y-2 transition-transform duration-700">
                 <img
+                  fetchPriority="high"
                   src={careersImg}
                   alt="Tanvox Future Careers"
-                  className="w-full h-auto rounded-[32px] shadow-[0_30px_60px_rgba(0,0,0,0.12)] object-cover scale-[1.02]"
+                  className="w-full h-auto transition-all duration-700 object-cover scale-[1.02] mix-blend-multiply bg-transparent"
                 />
-
               </div>
             </div>
 
@@ -264,19 +264,19 @@ const Careers = () => {
       </section>
 
       {/* Light Content wrapper */}
-      <div className="bg-white text-gray-900 relative rounded-t-[3rem] z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] pt-10 pb-10">
+      <div className="bg-[#f8fafc] text-gray-900 relative rounded-t-[3rem] z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] pt-10 pb-10">
 
         {/* Why Join Us */}
-        <section ref={benefitsRef} className="py-32 relative bg-gray-50 border-y border-gray-200">
+        <section ref={benefitsRef} className="py-8 md:py-16 relative bg-gray-50 border-y border-gray-100">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-5xl font-black mb-20 text-center text-gray-900">Why <span className="text-gradient">Join Us</span></h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="bg-white shadow-xl p-10 rounded-[32px] hover:bg-gray-50 transition-all duration-300 border border-gray-200 hover:border-blue-500/30 group hover:-translate-y-2">
-                  <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform animate-float text-blue-600 border border-blue-100">
+                <div key={index} className="bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] p-10 rounded-[32px] hover:bg-white transition-all duration-300 border border-gray-100 hover:border-blue-500/50 group hover:-translate-y-2">
+                  <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform animate-float text-blue-600 border border-blue-500/20">
                     {benefit.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors uppercase tracking-tighter">{benefit.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-400 transition-colors uppercase tracking-tighter">{benefit.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
@@ -285,7 +285,7 @@ const Careers = () => {
         </section>
 
         {/* Current Openings */}
-        <section ref={openingsRef} className="py-32 relative bg-white" id="openings">
+        <section ref={openingsRef} className="py-8 md:py-16 relative bg-[#f8fafc]" id="openings">
           <div className="container mx-auto px-6">
             <div className="text-center mb-20">
               <h2 className="text-3xl md:text-5xl font-black mb-4 text-gray-900">Current <span className="text-gradient">Openings</span></h2>
@@ -294,15 +294,12 @@ const Careers = () => {
 
             <div className="max-w-4xl mx-auto space-y-6">
               {jobs.map((job, index) => (
-                <div key={job.id} className="bg-white shadow-lg rounded-[32px] overflow-hidden border border-gray-200 hover:border-blue-500/30 transition-all">
-                  <div className="p-8 cursor-pointer hover:bg-gray-50" onClick={() => toggleJobExpansion(job.id)}>
+                <div key={job.id} className="bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] rounded-[32px] overflow-hidden border border-gray-100 hover:border-blue-500/50 transition-all">
+                  <div className="p-8 cursor-pointer hover:bg-white" onClick={() => toggleJobExpansion(job.id)}>
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                       <div>
-                        <div className="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center text-blue-400 font-bold mb-6 animate-pulse-slow">
-                          0{index + 1}
-                        </div>
                         <h3 className="text-2xl font-bold mb-3 tracking-tight">{job.title}</h3>
-                        <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-widest text-gray-500">
+                        <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-widest text-gray-600">
                           <span className="flex items-center gap-2">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500">
                               <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
@@ -337,7 +334,7 @@ const Careers = () => {
                       </div>
                       <div className="flex items-center gap-4">
                         <span className="text-sm font-bold text-blue-600 uppercase tracking-widest">View Details</span>
-                        <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center transform transition-transform ${expandedJob === job.id ? 'rotate-180' : ''}`}>
+                        <div className={`w-8 h-8 rounded-full bg-white flex items-center justify-center transform transition-transform ${expandedJob === job.id ? 'rotate-180' : ''}`}>
                           <svg className="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
                         </div>
                       </div>
@@ -345,7 +342,7 @@ const Careers = () => {
                   </div>
 
                   {expandedJob === job.id && (
-                    <div className="px-8 pb-10 pt-4 border-t border-gray-100 bg-gray-50">
+                    <div className="px-8 pb-10 pt-4 border-t border-gray-100 bg-white/50">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div>
                           <h4 className="text-xs font-black uppercase tracking-widest text-blue-600 mb-4">The Role</h4>
@@ -382,25 +379,25 @@ const Careers = () => {
         </section>
 
         {/* Our Culture */}
-        <section ref={cultureRef} className="py-32 relative bg-gray-50 border-y border-gray-200">
+        <section ref={cultureRef} className="py-8 md:py-16 relative bg-gray-50 border-y border-gray-100">
           <div className="container mx-auto px-6">
             <div className="text-center mb-20 text-center">
               <h2 className="text-3xl md:text-5xl font-black text-gray-900">Our <span className="text-gradient">Culture</span></h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="bg-white shadow-xl p-10 rounded-[32px] border border-gray-200 hover:border-blue-500/30 transition-all hover:-translate-y-2 hover:bg-gray-50">
+              <div className="bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] p-10 rounded-[32px] border border-gray-100 hover:border-blue-500/50 transition-all hover:-translate-y-2 hover:bg-white">
                 <h3 className="text-2xl font-bold mb-4 text-blue-600 tracking-tight">Innovation & Learning</h3>
                 <p className="text-gray-600 leading-relaxed">We foster a culture of continuous learning and innovation. Regular hackathons and tech talks keep us ahead of the curve.</p>
               </div>
-              <div className="bg-white shadow-xl p-10 rounded-[32px] border border-gray-200 hover:border-purple-500/30 transition-all hover:-translate-y-2 hover:bg-gray-50">
+              <div className="bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] p-10 rounded-[32px] border border-gray-100 hover:border-purple-500/50 transition-all hover:-translate-y-2 hover:bg-white">
                 <h3 className="text-2xl font-bold mb-4 text-purple-600 tracking-tight">Work-Life Balance</h3>
                 <p className="text-gray-600 leading-relaxed">Flexible hours and remote-first policies ensure our team stays creative and energized without burnout.</p>
               </div>
-              <div className="bg-white shadow-xl p-10 rounded-[32px] border border-gray-200 hover:border-blue-500/30 transition-all hover:-translate-y-2 hover:bg-gray-50">
+              <div className="bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] p-10 rounded-[32px] border border-gray-100 hover:border-blue-500/50 transition-all hover:-translate-y-2 hover:bg-white">
                 <h3 className="text-2xl font-bold mb-4 text-blue-600 tracking-tight">Collaboration</h3>
                 <p className="text-gray-600 leading-relaxed">An open-door policy where every voice matters. We build as a unified front, sharing successes together.</p>
               </div>
-              <div className="bg-white shadow-xl p-10 rounded-[32px] border border-gray-200 hover:border-purple-500/30 transition-all hover:-translate-y-2 hover:bg-gray-50">
+              <div className="bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] p-10 rounded-[32px] border border-gray-100 hover:border-purple-500/50 transition-all hover:-translate-y-2 hover:bg-white">
                 <h3 className="text-2xl font-bold mb-4 text-purple-600 tracking-tight">Clear Career Paths</h3>
                 <p className="text-gray-600 leading-relaxed">Structured growth plans and mentorship ensure you are never stagnant in your professional journey.</p>
               </div>
@@ -408,19 +405,8 @@ const Careers = () => {
           </div>
         </section>
 
-        {/* Ready to Join Us */}
-        <section className="py-32 mb-10">
-          <div className="container mx-auto px-6">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-20 rounded-[48px] text-center relative overflow-hidden shadow-2xl">
-              <div className="bg-white opacity-10 absolute inset-0"></div>
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-6xl font-black mb-8 leading-tight text-white">Ready to build <br />the future?</h2>
-                <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto font-medium">Don't see the perfect role? Send us your resume anyway—we're always looking for stars.</p>
-                <button onClick={() => handleApplyClick('General Application')} className="px-12 py-6 bg-white text-blue-900 font-black text-xl rounded-2xl hover:bg-gray-100 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:scale-105 active:scale-95">Send Your Resume</button>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Ready to Join Us Removed */}
+
 
       </div>
     </div>

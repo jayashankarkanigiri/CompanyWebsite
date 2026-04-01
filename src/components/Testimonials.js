@@ -70,7 +70,7 @@ const Testimonials = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             What Our <span className="text-red-400">Clients Say</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Don't just take our word for it - hear from our satisfied clients
           </p>
         </div>
@@ -86,7 +86,7 @@ const Testimonials = () => {
                 ))}
               </div>
               
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed italic">
+              <p className="text-xl text-gray-700 mb-8 leading-relaxed italic">
                 "{testimonials[activeIndex].content}"
               </p>
               
@@ -95,10 +95,10 @@ const Testimonials = () => {
                   {testimonials[activeIndex].avatar}
                 </div>
                 <div>
-                  <div className="text-white font-bold text-lg">
+                  <div className="text-gray-900 font-bold text-lg">
                     {testimonials[activeIndex].name}
                   </div>
-                  <div className="text-gray-400">
+                  <div className="text-gray-600">
                     {testimonials[activeIndex].position}
                   </div>
                   <div className="text-red-400 text-sm">
@@ -141,7 +141,7 @@ const Testimonials = () => {
         </div>
 
         <div className="fade-in">
-          <h3 className="text-2xl font-bold text-center mb-8 text-white">
+          <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">
             Trusted by Leading Companies
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
@@ -155,7 +155,7 @@ const Testimonials = () => {
                   <div className="w-16 h-16 bg-gradient-to-br from-red-400/20 to-blue-400/20 rounded-full flex items-center justify-center text-red-400 font-bold text-xl mx-auto mb-2">
                     {partner.logo}
                   </div>
-                  <div className="text-gray-300 text-sm font-medium">
+                  <div className="text-gray-700 text-sm font-medium">
                     {partner.name}
                   </div>
                 </div>
@@ -168,19 +168,19 @@ const Testimonials = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
               <div className="text-4xl font-bold text-red-400 mb-2">98%</div>
-              <div className="text-gray-400">Client Satisfaction</div>
+              <div className="text-gray-600">Client Satisfaction</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-red-400 mb-2">85%</div>
-              <div className="text-gray-400">Return Clients</div>
+              <div className="text-gray-600">Return Clients</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-red-400 mb-2">4.9/5</div>
-              <div className="text-gray-400">Average Rating</div>
+              <div className="text-gray-600">Average Rating</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-red-400 mb-2">200+</div>
-              <div className="text-gray-400">Reviews</div>
+              <div className="text-gray-600">Reviews</div>
             </div>
           </div>
         </div>

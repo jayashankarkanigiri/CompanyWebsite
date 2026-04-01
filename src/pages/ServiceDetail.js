@@ -148,7 +148,7 @@ const ServiceDetail = () => {
   const listRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 
     if (!data) return;
 
@@ -214,7 +214,7 @@ const ServiceDetail = () => {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-white flex flex-col items-center justify-center text-gray-900 pt-32 pb-32">
+      <div className="min-h-screen bg-[#f8fafc] flex flex-col items-center justify-center text-gray-900 pt-32 pb-32">
         <h1 className="text-4xl font-black mb-4">Service Not Found</h1>
         <button onClick={() => navigate('/services')} className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-500 transition-colors">
           Return to Services
@@ -224,12 +224,12 @@ const ServiceDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden pb-32 pt-20">
+    <div className="min-h-screen bg-[#f8fafc] text-gray-900 overflow-hidden pb-32 pt-20">
       {/* Back Button Overlay */}
       <div className="fixed top-28 left-6 md:left-12 z-50">
         <button 
           onClick={() => navigate('/services')}
-          className="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center text-gray-900 hover:bg-gray-50 hover:scale-110 transition-all duration-300 group"
+          className="w-12 h-12 rounded-full bg-white border border-gray-100 shadow-md flex items-center justify-center text-gray-900 hover:bg-white hover:scale-110 transition-all duration-300 group"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:-translate-x-1 transition-transform">
             <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -241,13 +241,13 @@ const ServiceDetail = () => {
       {/* Hero Section */}
       <section ref={heroRef} className="relative pt-20 pb-20 px-6 min-h-[60vh] flex items-center">
         {/* Background glow specific to category */}
-        <div className={`absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br ${data.accentColor} opacity-10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3`}></div>
+        {/* Glow orbs removed for performance */}
         
         <div className="container mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <div className="max-w-3xl">
-              <div className="animate-text inline-block px-4 py-2 border border-gray-200 rounded-full font-bold text-sm tracking-widest uppercase mb-6 bg-gray-50 shadow-sm text-gray-700">
+              <div className="animate-text inline-block px-4 py-2 border border-gray-100 rounded-full font-bold text-sm tracking-widest uppercase mb-6 bg-white shadow-sm text-gray-700">
                 Technology Detail
               </div>
               <h1 className="animate-text text-5xl md:text-7xl font-black mb-6 leading-tight">
@@ -259,7 +259,7 @@ const ServiceDetail = () => {
             </div>
 
             <div className="relative perspective-1000">
-              <div ref={imageRef} className="relative bg-white p-8 rounded-[40px] border border-gray-100 shadow-2xl flex items-center justify-center">
+              <div ref={imageRef} className="relative bg-white p-8 rounded-[40px] border border-gray-100 shadow-[0_30px_60px_rgba(0,0,0,0.5)] flex items-center justify-center">
                 <div className={`absolute inset-0 bg-gradient-to-br ${data.accentColor} opacity-10 rounded-[40px] mix-blend-overlay`}></div>
                 <img 
                   src={data.image} 
@@ -275,10 +275,10 @@ const ServiceDetail = () => {
 
       {/* Content Details Layer */}
       <div className="container mx-auto px-6 relative z-20">
-        <div ref={contentRef} className="bg-white text-gray-900 rounded-[40px] border border-gray-100 p-10 md:p-16 shadow-[0_30px_60px_rgba(0,0,0,0.05)] flex flex-col lg:flex-row gap-16 relative overflow-hidden -mt-10 lg:-mt-24">
+        <div ref={contentRef} className="bg-white text-gray-900 rounded-[40px] border border-gray-100 p-10 md:p-16 shadow-[0_30px_60px_rgba(0,0,0,0.5)] flex flex-col lg:flex-row gap-16 relative overflow-hidden -mt-10 lg:-mt-24">
           
           {/* subtle pattern inside white block */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gray-50 rounded-bl-full z-0"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/30 rounded-bl-full z-0"></div>
 
           <div className="lg:w-3/5 relative z-10">
             <h2 className="text-3xl font-black text-gray-900 mb-6">Overview</h2>

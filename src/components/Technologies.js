@@ -69,7 +69,7 @@ const Technologies = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Technologies <span className="text-red-400">We Master</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             We stay at the forefront of technology trends to deliver cutting-edge solutions
           </p>
         </div>
@@ -84,7 +84,7 @@ const Technologies = () => {
               <div className="text-red-400 mb-4">
                 {category.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -103,10 +103,10 @@ const Technologies = () => {
 
         <div className="bg-gradient-to-r from-red-900/20 to-blue-900/20 rounded-2xl p-12 border border-red-900/30 fade-in">
           <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold mb-4 text-white">
+            <h3 className="text-3xl font-bold mb-4 text-gray-900">
               Our Technology Stack
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-700">
               We leverage the best tools and frameworks to build robust, scalable solutions
             </p>
           </div>
@@ -127,19 +127,19 @@ const Technologies = () => {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center fade-in">
           <div>
             <div className="text-3xl font-bold text-red-400 mb-2">50+</div>
-            <div className="text-gray-400">Technologies</div>
+            <div className="text-gray-600">Technologies</div>
           </div>
           <div>
             <div className="text-3xl font-bold text-red-400 mb-2">15+</div>
-            <div className="text-gray-400">Frameworks</div>
+            <div className="text-gray-600">Frameworks</div>
           </div>
           <div>
             <div className="text-3xl font-bold text-red-400 mb-2">10+</div>
-            <div className="text-gray-400">Cloud Platforms</div>
+            <div className="text-gray-600">Cloud Platforms</div>
           </div>
           <div>
             <div className="text-3xl font-bold text-red-400 mb-2">24/7</div>
-            <div className="text-gray-400">Learning & Updating</div>
+            <div className="text-gray-600">Learning & Updating</div>
           </div>
         </div>
       </div>

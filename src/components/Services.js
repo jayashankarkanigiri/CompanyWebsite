@@ -65,7 +65,7 @@ const Services = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Our <span className="text-red-400">Services</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             We offer comprehensive software development services to help your business thrive in the digital age
           </p>
         </div>
@@ -80,10 +80,10 @@ const Services = () => {
               <div className="text-red-400 mb-4">
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
                 {service.title}
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 {service.description}
               </p>
             </div>

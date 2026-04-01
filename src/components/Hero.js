@@ -32,7 +32,7 @@ const Hero = () => {
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto" ref={heroRef}>
         <h1 className="text-5xl md:text-7xl font-bold mb-6 fade-in">
-          <span className="block text-white mb-2">Building Future-Ready</span>
+          <span className="block text-gray-900 mb-2">Building Future-Ready</span>
           <span className="block text-red-400">Software Solutions</span>
         </h1>
         
@@ -56,21 +56,21 @@ const Hero = () => {
         <div className="mt-16 grid grid-cols-3 gap-8 fade-in" style={{ animationDelay: '0.6s' }}>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-400">500+</div>
-            <div className="text-gray-400">Projects Delivered</div>
+            <div className="text-gray-600">Projects Delivered</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-400">50+</div>
-            <div className="text-gray-400">Expert Developers</div>
+            <div className="text-gray-600">Expert Developers</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-red-400">98%</div>
-            <div className="text-gray-400">Client Satisfaction</div>
+            <div className="text-gray-600">Client Satisfaction</div>
           </div>
         </div>
       </div>
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>

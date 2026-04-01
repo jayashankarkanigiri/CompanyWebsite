@@ -9,18 +9,18 @@
 }
 
 :root {
-  --primary: #1a12ba;
-  --secondary: #ba3131;
-  --accent: #dee0e0;
-  --dark-bg: #030712;
+  --primary: #000080;
+  --secondary: #cc0000;
+  --accent: #e5e7eb;
+  --dark-bg: #f8fafc;
   --card-bg: rgba(17, 24, 39, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --text-main: #f9fafb;
+  --text-main: #111827;
   --text-dim: #9ca3af;
-  --dark-red: #ef4444;
-  /* Modernized Red */
-  --navy-blue: #3b82f6;
-  /* Modernized Blue */
+  --dark-red: #cc0000;
+  /* Brand Red */
+  --navy-blue: #000080;
+  /* Brand Navy */
 }
 
 body {
@@ -189,11 +189,9 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  background: linear-gradient(135deg, var(--dark-red), var(--navy-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: gradient-shimmer 4s linear infinite;
 }
 
 @keyframes gradient-shimmer {
@@ -345,7 +343,7 @@ body {
 
 .glow-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(82, 2, 6, 0.3);
+  box-shadow: 0 10px 25px rgba(204, 0, 0, 0.3);
 }
 
 .glow-button::before {
@@ -562,4 +560,63 @@ body {
 
 .animation-delay-2000 {
   animation-delay: 2s;
+}
+
+/* Infinite Marquee classes */
+@keyframes scroller {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
+}
+
+.scroller-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroller-content {
+  display: flex;
+  width: max-content;
+  animation: scroller 30s linear infinite;
+}
+
+.scroller-content:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 767px) {
+  .scroller-container {
+    display: block;
+    width: 100%;
+    overflow: visible;
+  }
+  .scroller-container > .absolute {
+    display: none;
+  }
+  .scroller-content {
+    animation: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .scroller-content > * {
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+.hide-on-mobile {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: flex !important;
+  }
 }

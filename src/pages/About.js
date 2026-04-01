@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import aboutUsImg from "../assets/FinalAboutUsPage.png";
+import aboutUsImg from "../assets/TanvoxAbout4.png";
 import '../index.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,19 +17,19 @@ const About = () => {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-    // Hero Entrance
+    // Hero Entrance Animations
     tl.fromTo(titleRef.current,
-      { opacity: 0, x: -80 },
-      { opacity: 1, x: 0, duration: 1.2, delay: 0.2 }
+      { opacity: 0, y: 80 },
+      { opacity: 1, y: 0, duration: 1.2, delay: 0.2 }
     )
       .fromTo(textRef.current,
-        { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: 1 },
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1 },
         "-=0.8"
       )
       .fromTo(imageRef.current,
-        { opacity: 0, x: 80, scale: 0.9, rotate: 5 },
-        { opacity: 1, x: 0, scale: 1, rotate: 0, duration: 1.5 },
+        { opacity: 0, scale: 0.9, x: -200 },
+        { opacity: 1, scale: 1, x: 0, duration: 1.8, ease: 'power3.out' },
         "-=1.2"
       );
 
@@ -46,7 +46,7 @@ const About = () => {
 
     // Story Section Reveal
     if (storyRef.current) {
-      const storyItems = storyRef.current.querySelectorAll('.glass-card');
+      const storyItems = storyRef.current.querySelectorAll('.bg-white');
       gsap.fromTo(storyItems,
         { opacity: 0, y: 50 },
         {
@@ -56,6 +56,7 @@ const About = () => {
           scrollTrigger: {
             trigger: storyRef.current,
             start: "top 80%",
+            toggleActions: "play reverse play reverse"
           }
         }
       );
@@ -64,7 +65,7 @@ const About = () => {
 
     // Team Section Staggered Reveal
     if (teamRef.current) {
-      const teamMembers = teamRef.current.querySelectorAll('.glass-card');
+      const teamMembers = teamRef.current.querySelectorAll('.bg-white');
       gsap.fromTo(teamMembers,
         { opacity: 0, y: 60, scale: 0.95 },
         {
@@ -74,6 +75,7 @@ const About = () => {
           scrollTrigger: {
             trigger: teamRef.current,
             start: "top 80%",
+            toggleActions: "play reverse play reverse"
           }
         }
       );
@@ -95,24 +97,21 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden">
+    <div className="min-h-screen bg-[#f8fafc] text-gray-900 overflow-hidden">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
         {/* Background Effects */}
         <div className="bg-mesh opacity-10"></div>
         <div className="grid-bg absolute inset-0 opacity-50"></div>
 
         {/* Glow Orbs */}
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Glow orbs removed */}
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-
-
-            {/* LEFT SIDE - TEXT CONTENT */}
-            <div className="max-w-xl">
+            {/* Text Content */}
+            <div className="max-w-2xl order-1 lg:order-2">
               <h1 ref={titleRef} className="text-3xl md:text-5xl font-black mb-8 leading-[1.1] tracking-tighter">
                 About <br />
                 <span className="text-gradient">Tanvox Technologies</span>
@@ -133,33 +132,26 @@ const About = () => {
               </div>
             </div>
 
-            {/* RIGHT SIDE - IMAGE */}
-            <div className="relative">
-              <div className="absolute -inset-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl rounded-[32px]"></div>
-              <div ref={imageRef} className="relative z-10">
+            {/* Hero Image */}
+            <div className="relative order-2 lg:order-1">
+              <div ref={imageRef} className="relative z-10 overflow-hidden group hover:-translate-y-2 transition-transform duration-700">
                 <img
+                  fetchPriority="high"
                   src={aboutUsImg}
                   alt="Tanvox Team Collaboration"
-                  className="w-full h-auto shadow-[0_30px_60px_rgba(0,0,0,0.12)] rounded-[32px] object-cover"
+                  className="w-full h-auto transition-all duration-700 object-cover scale-[1.02] mix-blend-multiply bg-transparent"
                 />
-
-                {/* Floating Stats */}
-                <div className="absolute -bottom-6 -right-6 bg-white border border-gray-100 p-6 rounded-3xl shadow-2xl animate-float">
-                  <div className="text-3xl font-black text-blue-600 mb-1">2025</div>
-                  <div className="text-xs uppercase tracking-widest text-gray-500 font-bold">Founded in India</div>
-                </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Light Content wrapper */}
-      <div className="bg-white text-gray-900 relative rounded-t-[3rem] z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] pt-10 pb-10">
+      <div className="bg-[#f8fafc] text-gray-900 relative rounded-t-[3rem] z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] pt-10 pb-10">
 
         {/* Story & Evolution */}
-        <section ref={storyRef} className="py-24 relative bg-gray-50 border-y border-gray-100 overflow-hidden">
+        <section ref={storyRef} className="py-16 relative bg-[#f8fafc] border-y border-gray-100 overflow-hidden">
 
           {/* Animated Background Icons Left */}
           <div className="hidden lg:block absolute left-10 top-20 animate-float opacity-30 text-blue-500">
@@ -209,7 +201,7 @@ const About = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
-                <div className="bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)] p-8 rounded-3xl border border-gray-100 hover:border-blue-500/30 transition-all hover:-translate-y-1 group">
+                <div className="bg-white shadow-[0_10px_40px_rgba(0,0,0,0.3)] p-8 rounded-3xl border border-gray-100 hover:border-blue-500/50 transition-all hover:-translate-y-1 group">
                   <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform animate-float border border-blue-500/10">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
                       <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
@@ -218,10 +210,10 @@ const About = () => {
                       <path d="M12 15v5s3.03-.55 4.5-2c1.62-1.62 2.5-5 2.5-5" />
                     </svg>
                   </div>
-                  <h4 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">The Startup Era</h4>
+                  <h4 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-400 transition-colors">The Startup Era</h4>
                   <p className="text-gray-600 text-sm">Born from a passion for coding and problem-solving in a fast-paced digital landscape.</p>
                 </div>
-                <div className="bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)] p-8 rounded-3xl border border-gray-100 hover:border-purple-500/30 transition-all hover:-translate-y-1 group">
+                <div className="bg-white shadow-[0_10px_40px_rgba(0,0,0,0.3)] p-8 rounded-3xl border border-gray-100 hover:border-purple-500/50 transition-all hover:-translate-y-1 group">
                   <div className="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform animate-float animation-delay-500 border border-purple-500/10">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-600">
                       <circle cx="12" cy="12" r="10" />
@@ -229,7 +221,7 @@ const About = () => {
                       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                     </svg>
                   </div>
-                  <h4 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-purple-600 transition-colors">Global Horizon</h4>
+                  <h4 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-purple-400 transition-colors">Global Horizon</h4>
                   <p className="text-gray-600 text-sm">Expanding our reach and technical expertise to serve enterprise-level clients globally.</p>
                 </div>
               </div>
@@ -248,13 +240,13 @@ const About = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
               {team.map((member, index) => (
-                <div key={index} className="bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)] p-8 rounded-[32px] text-center transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-blue-500/30 group relative overflow-hidden flex flex-col h-full">
+                <div key={index} className="bg-white shadow-[0_10px_40px_rgba(0,0,0,0.3)] p-8 rounded-[32px] text-center transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-blue-500/50 group relative overflow-hidden flex flex-col h-full">
                   <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-blue-600 to-purple-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                  <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-blue-600 font-black text-2xl mx-auto mb-6 border border-gray-100 group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition-all duration-500">
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-blue-500 font-black text-2xl mx-auto mb-6 border border-gray-200 group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition-all duration-500">
                     {member.name.split(" ").map(n => n[0]).join("")}
                   </div>
                   <h3 className="text-xl font-black mb-2 tracking-tight text-gray-900">{member.name}</h3>
-                  <div className="text-blue-600 text-xs font-bold mb-4 uppercase tracking-widest">{member.role}</div>
+                  <div className="text-blue-400 text-xs font-bold mb-4 uppercase tracking-widest">{member.role}</div>
                   <p className="text-gray-600 text-sm leading-relaxed mt-auto">{member.description}</p>
                 </div>
               ))}

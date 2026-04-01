@@ -134,12 +134,6 @@ const Navbar = () => {
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)" },
         "-=0.5"
-      )
-      .fromTo(
-        ".nav-link",
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power2.out" },
-        "-=0.6"
       );
 
     return () => {
@@ -159,8 +153,8 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 nav-container ${scrolled
-        ? "bg-white/90 backdrop-blur-lg border-b border-gray-200 shadow-sm"
-        : "bg-transparent"
+        ? "bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-sm"
+        : "bg-white/80 backdrop-blur-md border-b border-gray-200"
         }`}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -170,13 +164,13 @@ const Navbar = () => {
           <img
             src={Tanvox}
             alt="Tanvox Logo"
-            className="h-20 object-contain rounded-lg group-hover:scale-105 transition-transform duration-500"
+            className="h-10 md:h-20 object-contain rounded-lg transition-transform duration-500"
           />
           <div className="flex flex-col ml-1">
-            <span className="text-4xl font-black tracking-tight text-gradient leading-none">
+            <span className="text-2xl md:text-4xl font-black tracking-tight text-gradient leading-none">
               Tanvox
             </span>
-            <span className="text-base font-bold tracking-widest uppercase text-gradient leading-tight pt-1">
+            <span className="text-[10px] md:text-base font-bold tracking-widest uppercase text-gradient leading-tight pt-0 md:pt-1">
               Technologies
             </span>
           </div>
@@ -190,13 +184,12 @@ const Navbar = () => {
               key={link.href}
               to={link.href}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className={`nav-link text-lg transition-all duration-300 relative group tracking-wide ${location.pathname === link.href
-                ? "text-blue-600"
-                : "text-gray-700 hover:text-blue-600"
+              className={`nav-link text-lg transition-colors duration-300 tracking-wide ${location.pathname === link.href
+                ? "text-[#1a12ba] font-bold"
+                : "text-gray-700 hover:text-[#1a12ba]"
                 }`}
             >
               {link.text}
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.href ? 'w-full' : ''}`}></span>
             </Link>
           ))}
 
@@ -204,7 +197,8 @@ const Navbar = () => {
 
         {/* MOBILE BUTTON */}
         <button
-          className="md:hidden text-black text-2xl"
+          className="md:hidden text-gray-900 text-2xl"
+          aria-label="Toggle Mobile Menu"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -224,12 +218,12 @@ const Navbar = () => {
 
       {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 shadow-xl px-6 pb-6 pt-2 animate-fade-in-up">
+        <div className="md:hidden bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-xl px-6 pb-6 pt-2 animate-fade-in-up">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className="block py-4 px-2 text-xl text-gray-800 font-bold hover:text-blue-600 border-b border-gray-100 last:border-0"
+              className="block py-4 px-2 text-xl text-gray-700 font-bold hover:text-blue-600 border-b border-gray-100 last:border-0"
               onClick={() => {
                 setMobileMenuOpen(false);
                 window.scrollTo({ top: 0, behavior: "smooth" });

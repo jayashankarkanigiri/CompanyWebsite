@@ -47,7 +47,7 @@ const Process = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             How We <span className="text-red-400">Work</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Our proven development process ensures successful project delivery and exceptional results
           </p>
         </div>
@@ -66,12 +66,12 @@ const Process = () => {
                   <div className="bg-gradient-to-br from-red-900/10 to-blue-900/10 backdrop-blur-sm rounded-xl p-8 border border-red-900/20 card-hover">
                     <div className="flex items-center mb-4">
                       <span className="text-4xl font-bold text-red-400 mr-4">{step.number}</span>
-                      <h3 className="text-2xl font-bold text-white">{step.title}</h3>
+                      <h3 className="text-2xl font-bold text-gray-900">{step.title}</h3>
                     </div>
-                    <p className="text-gray-300 mb-4 leading-relaxed">{step.description}</p>
+                    <p className="text-gray-700 mb-4 leading-relaxed">{step.description}</p>
                     <ul className="space-y-2">
                       {step.details.map((detail, detailIndex) => (
-                        <li key={detailIndex} className="flex items-center text-gray-400 text-sm">
+                        <li key={detailIndex} className="flex items-center text-gray-600 text-sm">
                           <svg className="w-4 h-4 text-red-400 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                           </svg>
@@ -87,7 +87,7 @@ const Process = () => {
                 <div className="w-full lg:w-5/12 flex justify-center lg:justify-center">
                   <div className="relative">
                     <div className="w-16 h-16 bg-gradient-to-br from-red-400 to-blue-400 rounded-full flex items-center justify-center">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </div>
